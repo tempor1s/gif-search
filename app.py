@@ -1,9 +1,9 @@
-Learn more or give us feedback
 from flask import Flask, render_template, request
 import requests
 import json
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -19,6 +19,7 @@ def index():
     # TODO: Render the 'index.html' template, passing the gifs as a named parameter
 
     return render_template("index.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
