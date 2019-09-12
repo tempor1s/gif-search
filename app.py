@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request
-import requests
-import json
 from tenor import gif_search, get_popular_gifs
 
 app = Flask(__name__)
@@ -10,17 +8,10 @@ app = Flask(__name__)
 # @app.route('/search', methods=['GET', 'POST'])
 def index():
     """Return homepage."""
-    # TODO: Extract query term from url
-
-    # TODO: Make 'params' dict with query term and API key
     display_gifs = True
 
     query = request.args.get('query')
-    results = gif_search(query)['results']
-
-    gifs = []
-    for gif in results:
-        gifs.append(gif)
+    gifs = gif_search(query)['results']
 
     if not gifs:
         display_gifs = False
