@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from tenor import gif_search, get_popular_gifs
+from tenor import gif_search, get_popular_gifs, get_random_gifs
 
 app = Flask(__name__)
 
@@ -11,19 +11,20 @@ def index():
     display_gifs = True
 
     query = request.args.get('query')
-    gifs = gif_search(query)['results']
+    req_type = request.args.get('type')
+    gifs = None
+
+    if req_type == 'search':
+        gifs = gif_search(query)['results']
+    elif req_type == 'random':
+        gifs = get_random_gifs()['results']
+    else:
+        gifs = get_popular_gifs()['results']
 
     if not gifs:
         display_gifs = False
 
     return render_template('index.html', gifs=gifs, display=display_gifs)
-
-    # popular_gifs = get_popular_gifs()['results']
-    # gifs = []
-    # for gif in popular_gifs:
-    #     gifs.append(gif)
-    # print('rendering most popular gifs!')
-    # return render_template('index.html', gifs=gifs)
 
 
 if __name__ == '__main__':
