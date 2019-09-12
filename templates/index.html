@@ -7,18 +7,22 @@
 <h1>Gif Search!</h1>
 <form action="/">
     <input type="text" name="query" />
-    <br>
-        <button class = "button" type="submit" value="submit">Search</button>
     <br />
-    <div class="button">
-        <button type="submit" name="type" value="search">Search</button>
-    </div>
+    <br />
+        <button class="button" type="submit" name="type" value="search">Search</button>
 </form>
 <form action="/">
-    <button type="submit" name="type" value="popular">Popular Gifs</button>
-    <button type="submit" name="type" value="random">Random Gifs</button>
+    <button class='button' type="submit" name="type" value="popular">Popular Gifs</button>
+    <button class='button' type="submit" name="type" value="random">Random Gifs</button>
 </form>
-{% if display %} {% for gif in gifs %} {% include 'gif.html' %} {% endfor %} {%
-else %}
-<h4>There are no gifs to display. Try another search query!</h4>
-{% endif %} {% endblock body %}
+
+<div class="gif">
+{% if display %} 
+    {% for gif in gifs %} 
+        {% include 'gif.html' %} 
+    {% endfor %} 
+{% else %}
+    <h4>There are no gifs to display. Try another search query!</h4>
+{% endif %} 
+</div>
+{% endblock body %}

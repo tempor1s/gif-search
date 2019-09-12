@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-# @app.route('/search', methods=['GET', 'POST'])
 def index():
     """Return homepage."""
     display_gifs = True
@@ -28,4 +27,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
