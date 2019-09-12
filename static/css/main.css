@@ -3,6 +3,9 @@ body {
   align-items: center;
   background-color: #333;
   color: #fff;
+  background-image: url("../15-Presentation-Background-Examples33.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -18,11 +21,17 @@ input {
 }
 
 .button {
-  margin: 20px;
-  font-size: 20px;
+  margin: 15px;
+  font-size: 16px;
   border-radius: 5%;
 }
 .tenor-gif-embed {
   display: inline-block;
-  margin: 5%;
+  margin: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+  .tenor-gif-embed {
+    margin: 0;
+  }
 }
