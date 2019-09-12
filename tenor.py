@@ -15,7 +15,6 @@ def gif_search(query):
     r = requests.get(url + "/search", params)
 
     if r.status_code == 200:
-        # load the GIFs using the urls for the smaller GIF sizes
         gifs = r.json()
         return gifs
     else:
@@ -32,5 +31,20 @@ def get_popular_gifs():
     if r.status_code == 200:
         trending_gifs = r.json()
         return trending_gifs
+    else:
+        return None
+
+
+def get_random_gifs():
+    params = {
+        "q": 'random',
+        "key": apikey,
+        "limit": limit
+    }
+    r = requests.get(url + '/random', params)
+
+    if r.status_code == 200:
+        random_gifs = r.json()
+        return random_gifs
     else:
         return None
