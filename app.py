@@ -23,7 +23,7 @@ def index():
     if not gifs:
         display_gifs = False
 
-    return render_template('index.html', gifs=gifs, display=display_gifs)
+    return render_template('index.html', gifs=gifs, display_gifs=display_gifs)
 
 
 if __name__ == '__main__':

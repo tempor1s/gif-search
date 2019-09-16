@@ -15,18 +15,10 @@
 <form action="/">
     <button class = "button" type="submit" name="type" value="popular">Popular Gifs</button>
     <button class = "button" type="submit" name="type" value="random">Random Gifs</button>
-    <input type="text" name="query" />
-    <br />
-    <br />
-        <button class="button" type="submit" name="type" value="search">Search</button>
-</form>
-<form action="/">
-    <button class='button' type="submit" name="type" value="popular">Popular Gifs</button>
-    <button class='button' type="submit" name="type" value="random">Random Gifs</button>
 </form>
 
 <div class="gif">
-{% if display %} 
+{% if display_gifs %} 
     {% for gif in gifs %} 
         {% include 'gif.html' %} 
     {% endfor %} 
