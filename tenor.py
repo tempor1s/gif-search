@@ -3,7 +3,7 @@ import json
 # set the apikey
 apikey = "CQ58OJ4GZ9WQ"
 url = "https://api.tenor.com/v1"
-limit = 10
+limit = 9
 
 
 def gif_search(query):
