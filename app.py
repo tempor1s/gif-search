@@ -11,7 +11,7 @@ def index():
 
     query = request.args.get('query')
     req_type = request.args.get('type')
-    gifs = None
+    gifs = None  # Otherwise code will break before its posted to
 
     if req_type == 'search':
         gifs = gif_search(query)['results']
