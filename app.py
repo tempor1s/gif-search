@@ -7,12 +7,14 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Return homepage."""
-    display_gifs = True
-
+    # Get query and 'type' from query string
     query = request.args.get('query')
     req_type = request.args.get('type')
-    gifs = None  # Otherwise code will break before its posted to
+    # Since we are passing this through before we set it, we have to init both of the vars
+    gifs = None
+    display_gifs = True
 
+    # Check the request type, if none then set gifs to popular gifs, otherwise get one of the others
     if req_type == 'search':
         gifs = gif_search(query)['results']
     elif req_type == 'random':
@@ -20,9 +22,11 @@ def index():
     else:
         gifs = get_popular_gifs()['results']
 
+    # Set display gifs to false if gifs is empty or none
     if not gifs:
         display_gifs = False
 
+    # Render the template with index.html and gifs.html
     return render_template('index.html', gifs=gifs, display_gifs=display_gifs)
 
 
