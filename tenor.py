@@ -1,22 +1,51 @@
 import requests
 import json
-# set the apikey and limit
-apikey = "CQ58OJ4GZ9WQ"  # test value
-lmt = 8
-
-# our test search
-search_term = "excited"
-
-# get the top 8 GIFs for the search term
-r = requests.get(
-    "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
-
-if r.status_code == 200:
-    # load the GIFs using the urls for the smaller GIF sizes
-    top_8gifs = json.loads(r.content)
-    print(top_8gifs)
-else:
-    top_8gifs = None
+# set the apikey
+apikey = "CQ58OJ4GZ9WQ"
+url = "https://api.tenor.com/v1"
+limit = 9
 
 
-# continue a similar pattern until the user makes a selection or starts a new search.
+def gif_search(query):
+    params = {
+        "q": query,
+        "key": apikey,
+        "limit": limit
+    }
+    r = requests.get(url + "/search", params)
+
+    if r.status_code == 200:
+        gifs = r.json()
+        return gifs
+    else:
+        return None
+
+
+def get_popular_gifs():
+    params = {
+        "key": apikey,
+        "limit": limit
+    }
+    r = requests.get(url + "/trending", params)
+
+    if r.status_code == 200:
+        trending_gifs = r.json()
+        return trending_gifs
+    else:
+        return None
+
+
+def get_random_gifs():
+    params = {
+        "q": 'random',
+        "key": apikey,
+        "limit": limit
+    }
+    r = requests.get(url + '/random', params)
+
+    if r.status_code == 200:
+        random_gifs = r.json()
+        return random_gifs
+    else:
+        return None
+ 

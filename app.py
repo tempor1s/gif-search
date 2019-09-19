@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-import requests
-import json
+from tenor import gif_search, get_popular_gifs, get_random_gifs
 
 app = Flask(__name__)
 
@@ -8,18 +7,24 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Return homepage."""
-    # TODO: Extract query term from url
+    display_gifs = True
 
-    # TODO: Make 'params' dict with query term and API key
+    query = request.args.get('query')
+    req_type = request.args.get('type')
+    gifs = None  # Otherwise code will break before its posted to
 
-    # TODO: Make an API call to Tenor using the 'requests' library
+    if req_type == 'search':
+        gifs = gif_search(query)['results']
+    elif req_type == 'random':
+        gifs = get_random_gifs()['results']
+    else:
+        gifs = get_popular_gifs()['results']
 
-    # TODO: Get the first 10 results from the search results
+    if not gifs:
+        display_gifs = False
 
-    # TODO: Render the 'index.html' template, passing the gifs as a named parameter
-
-    return render_template("index.html")
+    return render_template('index.html', gifs=gifs, display_gifs=display_gifs)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
