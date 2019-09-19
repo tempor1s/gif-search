@@ -31,16 +31,29 @@ h1 {
 }
 input {
   width: 80%;
+  background-color: #444444;
+  border-color: #333;
   max-width: 400px;
   font-size: 18px;
+  color: #fff;
   padding: 5px;
   border-radius: 7px;
+}
+
+input:focus {
+  background-color: #222;
+  transition-duration: 0.3s;
+  outline: 0;
+}
+
+::placeholder {
+  color: #b3b3b3;
 }
 
 .button {
   background-color: #444444;
   border-color: #000;
-  color: #fff;
+  color: #e6e6e6q;
   margin-left: 60px;
   margin-right: 60px;
   margin-top: 20px;
