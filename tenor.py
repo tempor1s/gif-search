@@ -48,3 +48,4 @@ def get_random_gifs():
         return random_gifs
     else:
         return None
+ 
