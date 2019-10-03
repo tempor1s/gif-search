@@ -1,6 +1,11 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # set the apikey
+TENOR_API_KEY = os.getenv("TENOR_API_KEY")
 apikey = "CQ58OJ4GZ9WQ"
 url = "https://api.tenor.com/v1"
 limit = 9
@@ -13,7 +18,7 @@ def gif_search(query):
     # Params to be used in the request
     params = {
         "q": query,  # query
-        "key": apikey,  # api key
+        "key": TENOR_API_KEY,  # api key
         "limit": limit  # amount of gifs to return
     }
     r = requests.get(url + "/search", params)  # GET request to search endpoint
@@ -31,7 +36,7 @@ def get_popular_gifs():
     """
     # Params to be used in request
     params = {
-        "key": apikey,  # api key
+        "key": TENOR_API_KEY,  # api key
         "limit": limit  # amount of gifs to return
     }
     # GET request to popular gifs endpoint
@@ -51,7 +56,7 @@ def get_random_gifs():
     # Params to be used in request
     params = {
         "q": 'random',  # Pass in 'random' keyword because there is no true random in gifsearch
-        "key": apikey,  # api key
+        "key": TENOR_API_KEY,  # api key
         "limit": limit  # amount of gifs to return
     }
     # GET request to random gifs endpoint
