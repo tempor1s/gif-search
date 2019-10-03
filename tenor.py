@@ -6,7 +6,6 @@ load_dotenv()
 
 # set the apikey
 TENOR_API_KEY = os.getenv("TENOR_API_KEY")
-apikey = "CQ58OJ4GZ9WQ"
 url = "https://api.tenor.com/v1"
 limit = 9
 
